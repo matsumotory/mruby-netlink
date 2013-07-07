@@ -15,12 +15,11 @@ end
 ## example
 
 ```ruby
-n = Netlink.new
-n.set "eth0", "down"
-n.run
+n = Netlink.new "eth1"
 
-n.set "eth0", "up"
-n.run
+n.down
+sleep 5
+n.up
 
 n.close
 ```
