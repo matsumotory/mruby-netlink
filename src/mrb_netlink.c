@@ -172,6 +172,7 @@ void mrb_mruby_netlink_gem_init(mrb_state *mrb)
   mrb_define_method(mrb, netlink, "initialize", mrb_netlink_init, MRB_ARGS_REQ(1));
   mrb_define_method(mrb, netlink, "up", mrb_netlink_up, MRB_ARGS_NONE());
   mrb_define_method(mrb, netlink, "down", mrb_netlink_down, MRB_ARGS_NONE());
+  //mrb_define_method(mrb, netlink, "set", mrb_netlink_set, MRB_ARGS_ANY());
   mrb_define_method(mrb, netlink, "talk", mrb_netlink_talk, MRB_ARGS_NONE());
   mrb_define_method(mrb, netlink, "close", mrb_netlink_close, MRB_ARGS_NONE());
 }
