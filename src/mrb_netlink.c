@@ -134,7 +134,7 @@ static mrb_value mrb_netlink_set(mrb_state *mrb, mrb_value self)
   return self;
 }
 
-static mrb_value mrb_netlink_run(mrb_state *mrb, mrb_value self)
+static mrb_value mrb_netlink_send(mrb_state *mrb, mrb_value self)
 {
   mrb_netlink_context *nctx = mrb_netlink_get_context(mrb, self, "mrb_netlink_context");
   //rtnl_talk(nctx->rth, &nctx->req->n, 0, 0, NULL, NULL, NULL);
@@ -155,7 +155,8 @@ void mrb_mruby_netlink_gem_init(mrb_state *mrb)
   netlink = mrb_define_class(mrb, "Netlink", mrb->object_class);
   mrb_define_method(mrb, netlink, "initialize", mrb_netlink_init, MRB_ARGS_NONE());
   mrb_define_method(mrb, netlink, "set", mrb_netlink_set, MRB_ARGS_REQ(2));
-  mrb_define_method(mrb, netlink, "run", mrb_netlink_run, MRB_ARGS_NONE());
+  mrb_define_method(mrb, netlink, "run", mrb_netlink_send, MRB_ARGS_NONE());
+  mrb_define_method(mrb, netlink, "send", mrb_netlink_send, MRB_ARGS_NONE());
   mrb_define_method(mrb, netlink, "close", mrb_netlink_close, MRB_ARGS_NONE());
 }
 
