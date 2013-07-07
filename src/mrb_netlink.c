@@ -119,7 +119,7 @@ static mrb_value mrb_netlink_set(mrb_state *mrb, mrb_value self)
 
   nctx->req->i.ifi_index = if_nametoindex(dev);
   if (nctx->req->i.ifi_index == 0)
-    mrb_raisef(mrb, E_RUNTIME_ERROR, "Cannot find device \"%S\"\n", dev);
+    mrb_raisef(mrb, E_RUNTIME_ERROR, "Cannot find device \"%S\"", mrb_str_new_cstr(mrb, dev));
 
   mrb_iv_set(mrb
       , self
