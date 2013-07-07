@@ -94,13 +94,13 @@ static mrb_value mrb_netlink_init(mrb_state *mrb, mrb_value self)
     mrb_raisef(mrb, E_RUNTIME_ERROR, "Cannot find device \"%S\"", mrb_str_new_cstr(mrb, dev));
 
   mrb_iv_set(mrb
-      , self
-      , mrb_intern(mrb, "mrb_netlink_context")
-      , mrb_obj_value(Data_Wrap_Struct(mrb
-          , mrb->object_class
-          , &mrb_netlink_context_type
-          , (void *)nctx)
-      )
+    , self
+    , mrb_intern(mrb, "mrb_netlink_context")
+    , mrb_obj_value(Data_Wrap_Struct(mrb
+      , mrb->object_class
+      , &mrb_netlink_context_type
+      , (void *)nctx)
+    )
   );
 
   return self;
@@ -116,13 +116,13 @@ static mrb_value mrb_netlink_up(mrb_state *mrb, mrb_value self)
   ret = rtnl_talk(nctx->rth, &nctx->req->n, 0, 0, NULL);
 
   mrb_iv_set(mrb
-      , self
-      , mrb_intern(mrb, "mrb_netlink_context")
-      , mrb_obj_value(Data_Wrap_Struct(mrb
-          , mrb->object_class
-          , &mrb_netlink_context_type
-          , (void *)nctx)
-      )
+    , self
+    , mrb_intern(mrb, "mrb_netlink_context")
+    , mrb_obj_value(Data_Wrap_Struct(mrb
+      , mrb->object_class
+      , &mrb_netlink_context_type
+      , (void *)nctx)
+    )
   );
 
   return mrb_fixnum_value(ret);
@@ -138,13 +138,13 @@ static mrb_value mrb_netlink_down(mrb_state *mrb, mrb_value self)
   ret = rtnl_talk(nctx->rth, &nctx->req->n, 0, 0, NULL);
 
   mrb_iv_set(mrb
-      , self
-      , mrb_intern(mrb, "mrb_netlink_context")
-      , mrb_obj_value(Data_Wrap_Struct(mrb
-          , mrb->object_class
-          , &mrb_netlink_context_type
-          , (void *)nctx)
-      )
+    , self
+    , mrb_intern(mrb, "mrb_netlink_context")
+    , mrb_obj_value(Data_Wrap_Struct(mrb
+      , mrb->object_class
+      , &mrb_netlink_context_type
+      , (void *)nctx)
+    )
   );
 
   return mrb_fixnum_value(ret);
