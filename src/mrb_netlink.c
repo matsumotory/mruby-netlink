@@ -63,7 +63,7 @@ static mrb_netlink_context *mrb_netlink_get_context(mrb_state *mrb,  mrb_value s
   mrb_netlink_context *c;
   mrb_value context;
 
-  context = mrb_iv_get(mrb, self, mrb_intern(mrb, ctx_flag));
+  context = mrb_iv_get(mrb, self, mrb_intern_cstr(mrb, ctx_flag));
   Data_Get_Struct(mrb, context, &mrb_netlink_context_type, c);
   if (!c)
     mrb_raise(mrb, E_RUNTIME_ERROR, "get mrb_netlink_context failed");
@@ -95,7 +95,7 @@ static mrb_value mrb_netlink_init(mrb_state *mrb, mrb_value self)
 
   mrb_iv_set(mrb
     , self
-    , mrb_intern(mrb, "mrb_netlink_context")
+    , mrb_intern_lit(mrb, "mrb_netlink_context")
     , mrb_obj_value(Data_Wrap_Struct(mrb
       , mrb->object_class
       , &mrb_netlink_context_type
@@ -117,7 +117,7 @@ static mrb_value mrb_netlink_up(mrb_state *mrb, mrb_value self)
 
   mrb_iv_set(mrb
     , self
-    , mrb_intern(mrb, "mrb_netlink_context")
+    , mrb_intern_lit(mrb, "mrb_netlink_context")
     , mrb_obj_value(Data_Wrap_Struct(mrb
       , mrb->object_class
       , &mrb_netlink_context_type
@@ -139,7 +139,7 @@ static mrb_value mrb_netlink_down(mrb_state *mrb, mrb_value self)
 
   mrb_iv_set(mrb
     , self
-    , mrb_intern(mrb, "mrb_netlink_context")
+    , mrb_intern_lit(mrb, "mrb_netlink_context")
     , mrb_obj_value(Data_Wrap_Struct(mrb
       , mrb->object_class
       , &mrb_netlink_context_type
