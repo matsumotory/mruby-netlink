@@ -113,7 +113,7 @@ static mrb_value mrb_netlink_up(mrb_state *mrb, mrb_value self)
 
   nctx->req->i.ifi_change |= IFF_UP;
   nctx->req->i.ifi_flags |= IFF_UP;
-  ret = rtnl_talk(nctx->rth, &nctx->req->n, 0, 0, NULL);
+  ret = rtnl_talk(nctx->rth, &nctx->req->n, 0, 0, NULL, NULL, NULL);
 
   mrb_iv_set(mrb
     , self
@@ -135,7 +135,7 @@ static mrb_value mrb_netlink_down(mrb_state *mrb, mrb_value self)
 
   nctx->req->i.ifi_change |= IFF_UP;
   nctx->req->i.ifi_flags &= ~IFF_UP;
-  ret = rtnl_talk(nctx->rth, &nctx->req->n, 0, 0, NULL);
+  ret = rtnl_talk(nctx->rth, &nctx->req->n, 0, 0, NULL, NULL, NULL);
 
   mrb_iv_set(mrb
     , self
@@ -154,7 +154,7 @@ static mrb_value mrb_netlink_talk(mrb_state *mrb, mrb_value self)
 {
   mrb_netlink_context *nctx = mrb_netlink_get_context(mrb, self, "mrb_netlink_context");
   //rtnl_talk(nctx->rth, &nctx->req->n, 0, 0, NULL, NULL, NULL);
-  rtnl_talk(nctx->rth, &nctx->req->n, 0, 0, NULL);
+  rtnl_talk(nctx->rth, &nctx->req->n, 0, 0, NULL, NULL, NULL);
   return self;
 }
 
